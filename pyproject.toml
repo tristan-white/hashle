@@ -1,0 +1,27 @@
+[project]
+name = "hashle"
+version = "0.0.1"
+description = "a python CLI tool and library for performing hash length extension attacks against vulnerable Merkle-Damgard hashes."
+readme = "README.md"
+authors = [
+    { name = "tristan" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "typer>=0.27.0",
+]
+
+[project.scripts]
+hashle = "hashle:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.6.0",
+    "pytest>=9.1.1",
+    "ruff>=0.15.22",
+    "ty>=0.0.61",
+]
