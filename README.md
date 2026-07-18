@@ -1,5 +1,7 @@
 # hashle
 
+![PyPI - Version](https://img.shields.io/pypi/v/hashle)
+
 `hashle` is a Python library and CLI for performing **hash length extension (HLE) attacks** against vulnerable Merkle-Damgard hash constructions.
 
 Given `H(secret || known_data)`, an assumed length for `secret`, and attacker controlled data, `hashle` computes a new message and a valid signature for `H(secret || known_data || glue_padding || append_data)` -- all *without ever knowing `secret`*.
@@ -29,10 +31,19 @@ pure Python:
 
 All algorithms are implemented on top of a single generic, resumable Merkle-Damgard engine (`hashle.algorithms.base.HashAlgorithm`) that mirrors [hash_extender_engine.c](https://github.com/iagox86/hash_extender/blob/master/hash_extender_engine.c)'s padding and state-resumption logic, so adding a new algorithm only requires implementing its compression function.
 
-## Installation / development
+## Installation
 
-This project uses [`uv`](https://docs.astral.sh/uv/) for dependency
-management. Always prefix Python invocations with `uv run`:
+hashle is available on pypi.org and can be installed with pip.
+
+[`uv`](https://docs.astral.sh/uv/) is recommended for installing hashle. Install uv and hashle in one command:
+
+```
+curl -LsSf uvx.sh/hashle/install.sh | sh
+```
+
+## Development
+
+This project uses [`uv`](https://docs.astral.sh/uv/) for dependency management. Always prefix Python invocations with `uv run`:
 
 ```sh
 uv sync
